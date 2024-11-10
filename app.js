@@ -60,6 +60,7 @@ button.onclick = () => {
       if (eggBottomPosition >= screenHeight) {
         miss--;
         missedCount.textContent = miss;
+        egg.style.transition = "unset";
         egg.remove();
         clearInterval(collisionCheck);
       }
@@ -111,24 +112,20 @@ button.onclick = () => {
         level.textContent = "Newbie";
         level.className = "l newbie";
       }
-      egg.style.top = "100vh";
+      egg.style.top = "95vh";
     }, 100);
 
     let collisionCheck = setInterval(() => {
-
       if (checkCollision(egg, bowl)) {
-
         count++;
         score.textContent = count;
         egg.remove();
         clearInterval(collisionCheck);
-        
       }
-
-      if (breakTheEgg(egg, bowl)){
+      if (breakTheEgg(egg, bowl)) {
         egg.setAttribute(
           "src",
-          "https://cdn-icons-png.flaticon.com/512/10305/10305349.png"
+          "https://th.bing.com/th/id/R.0296a4fd022d6b92cda045f295e5f3fc?rik=ot30E0z7dRqUHA&pid=ImgRaw&r=0"
         );
       }
     }, 50);
