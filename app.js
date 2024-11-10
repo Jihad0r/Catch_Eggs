@@ -57,10 +57,9 @@ button.onclick = () => {
     setTimeout(() => {
       const eggBottomPosition = egg.getBoundingClientRect().bottom;
       const screenHeight = window.innerHeight;
-      if (eggBottomPosition >= screenHeight) {
+      if (parseInt(eggBottomPosition) >= screenHeight) {
         miss--;
         missedCount.textContent = miss;
-        egg.style.transition = "unset";
         egg.remove();
         clearInterval(collisionCheck);
       }
@@ -112,8 +111,12 @@ button.onclick = () => {
         level.textContent = "Newbie";
         level.className = "l newbie";
       }
-      egg.style.top = "95vh";
-    }, 100);
+      if (window.innerWidth <= 900) {
+        egg.style.top = "88vh";
+      } else {
+        egg.style.top = "95vh";
+      }
+    }, 10);
 
     let collisionCheck = setInterval(() => {
       if (checkCollision(egg, bowl)) {
